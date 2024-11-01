@@ -33,6 +33,11 @@ public class ProduitController {
         Produit produit = produitService.getProduitById(id).getBody();
         return new ResponseEntity<>(produit, HttpStatus.OK);
     }
+    @GetMapping("/name/{nom}")
+    public ResponseEntity<Produit> getProduitByName(@PathVariable String nom) {
+        Produit produit = produitService.getProduitByNom(nom);
+        return new ResponseEntity<>(produit, HttpStatus.OK);
+    }
 
     @PostMapping
     public ResponseEntity<Produit> addProduit(@RequestBody Produit produit) {

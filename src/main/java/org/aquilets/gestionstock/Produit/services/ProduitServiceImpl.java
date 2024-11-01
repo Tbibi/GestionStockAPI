@@ -31,6 +31,11 @@ public class ProduitServiceImpl implements ProduitService {
                 .orElseThrow(() -> new RuntimeException("Produit not found with id " + id));
         return new ResponseEntity<>(produit, HttpStatus.OK);
     }
+    @Override
+    public Produit getProduitByNom(String nom) {
+        return (Produit) produitRepository.findByNom(nom)
+                .orElseThrow(() -> new RuntimeException("Produit not found with name " + nom));
+    }
 
     @Override
     public ResponseEntity<Produit> addProduit(Produit produit) {
